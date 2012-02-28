@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+
+
+Reference Links
+
+http://stackoverflow.com/questions/1664140/js-function-to-calculate-complementary-colour
+http://stackoverflow.com/questions/43044/algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
+http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
+http://en.wikipedia.org/wiki/HSL_color_space
+http://itunes.apple.com/au/app/tiny-wings/id417817520?mt=8
+
+-->
+
+<html>
+<head>
+    <title>Procedural Images via the HTML5 &lt;canvas&gt;</title>
+    <meta charset='utf-8'>
+    <script src='js/slides.js'></script>
+	<link href="css/fonts.css" rel="stylesheet" />
+	
+	<style>
+		
+		.template-awesome > article.far-past, .template-awesome > article.past,
+		.template-awesome > article.next, .template-awesome > article.far-next {
+			opacity: 0.3;
+		}
+		
+		.template-awesome ul, .template-awesome pre {
+			margin-top: 20px;
+		}
+		
+		.template-awesome ul ul {
+			margin-top: 20px;
+		}
+		
+		li {
+			text-overflow: ellipsis;
+		}
+		
+	</style>
+	
+</head>
+<body style='display: none'>
+    <section class='slides layout-regular template-awesome'>
+		<article>
+        	<h1>
+				Procedural Images
+          		<br>
+          		via the HTML5 &lt;canvas&gt;
+        	</h1>
+        	<p>
+          		Aaron Snoswell (<a href="https://twitter.com/aaronsnoswell">@aaronsnoswell</a>)
+          		<br>
+          		Feb 28, 2011
+        	</p>
+      	</article>
+		
+      	<article>
+			<h3>&nbsp;</h3>
+        	<p>
+          		<img id="nerves-orig" class='centered' style='height:500px' src='images/nerves.png'>
+        	</p>
+        	<div class='source'>
+          		Google Images
+        	</div>
+      	</article>
+		
+		<article>
+			<h2>Why Procedural Images?</h2>
+		</article>
+		
+      	<article>
+        	<h3>Size</h3>
+			<ul>
+				<li>Procedural Rose by <a href="https://twitter.com/romancortes">Román Cortés</a></li>
+			</ul>
+			<p><img class="centered" style="height:275px" src="images/rose.png" /></p>
+			<ul>
+				<li>png - 69kb</li>
+				<li>jpg - 19kb</li>
+				<li>Procedurally generated - <a href="http://js1k.com/2012-love/demo/1022">1kb of JavaScript</a></li>
+				<li class="red">Caveat: Dynamic data is not cached!</li>
+			</ul>
+        	<div class='source'>
+          		Román Cortés, <a href="http://www.romancortes.com/blog/1k-rose/">http://www.romancortes.com/blog/1k-rose/</a>
+        	</div>
+      	</article>
+
+		<article>
+			<h3>
+				Code for procedural rose
+			</h3>
+			<ul><li>Extreme example, not the norm</li></ul>
+			<section>
+				<pre>
+with(m=Math)C=cos,S=sin,P=pow,R=random;c.width=c.height=f=500;h=-250;
+function p(a,b,c){if(c>60)return[S(a*7)*(13+5/(.2+P(b*4,4)))-S(b)*50,
+b*f+50,625+C(a*7)*(13+5/(.2+P(b*4,4)))+b*400,a*1-b/2,a];A=a*2-1;
+B=b*2-1;if(A*A+B*B<1){if(c>37){n=(j=c&1)?6:4;o=.5/(a+.01)+C(b*125)*
+3-a*300;w=b*h;return[o*C(n)+w*S(n)+j*610-390,o*S(n)-w*C(n)+550-j*350,
+1180+C(B+A)*99-j*300,.4-a*.1+P(1-B*B,-h*6)*.15-a*b*.4+C(a+b)/
+5+P(C((o*(a+1)+(B>0?w:-w))/25),30)*.1*(1-B*B),o/1e3+.7-o*w*3e-6]}
+if(c>32){c=c*1.16-.15;o=a*45-20;w=b*b*h;z=o*S(c)+w*C(c)+620;
+return[o*C(c)-w*S(c),28+C(B*.5)*99-b*b*b*60-z/2-h,z,(b*b*.3+P((1-(A*
+A)),7)*.15+.3)*b,b*.7]}o=A*(2-b)*(80-c*2);w=99-C(A)*120-C(b)*(-h-c*4.9)+
+C(P(1-b,7))*50+c*2;z=o*S(c)+w*C(c)+700;return[o*C(c)-w*S(c),B*99-C(P(b,
+7))*50-c/3-z/1.35+450,z,(1-b/1.2)*.9+a*.1, P((1-b),20)/4+.05]}}
+setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i%46/.74)){z=s[2];
+x=~~(s[0]*f/z-h);y=~~(s[1]*f/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,
+a.fillStyle="rgb("+~(s[3]*h)+","+~(s[4]*h)+","+~(s[3]*s[3]*-80)+")",
+a.fillRect(x,y,1,1)}',0)
+				</pre>
+			</section>
+			
+		</article>
+		
+		<article>
+			<h3>Fun!</h3>
+			<ul>
+				<li>Look, ma! No &lt;img&gt;'s</li>
+				<li><a href="http://textify.it/">Textify.it</a> - Visualise images using text</li>
+        		<p><img class='centered' style='height:400px' src='images/nerves-textified.png'></p>
+		</article>
+		
+		<article>
+			<h2>Great, show me an example already!</h2>
+		</article>
+		
+		<article>
+			<h3>Hello, World!</h3>
+			<p><input type="button" value="Run code" onclick="helloworld();"></p>
+			<script id="hello-world">
+				function helloworld() {
+					// Create an off-screen canvas
+					var canvas = document.createElement("canvas"),
+					    ctx = canvas.getContext("2d");
+					canvas.width = canvas.height = 400;
+
+					// Draw stuff
+					ctx.translate(200, 200)
+					ctx.rotate(45 * Math.PI / 180);
+					ctx.fillStyle = "rgb(200,0,0)";
+					ctx.fillRect(-100, -100, 200, 200);
+
+					// Create image with toDataURL
+					var img = new Image();
+					img.src = canvas.toDataURL("img/png");
+
+					// !Important! Wait for image to load
+					img.onload = function() {
+						// Get a reference to this script tag
+						var me = document.querySelector("script#hello-world");
+						me.parentNode.insertBefore(img, me.nextSibling);
+					}
+				}
+			</script>
+		</article>
+		
+		<article>
+			<h3>Hello, World - Code</h3>
+			<section>
+				<pre>
+// Create an off-screen canvas
+var canvas = document.createElement("canvas"),
+    ctx = canvas.getContext("2d");
+canvas.width = canvas.height = 400;
+
+// Draw stuff
+ctx.translate(200, 200)
+ctx.rotate(45 * Math.PI / 180);
+ctx.fillStyle = "rgb(200,0,0)";
+ctx.fillRect(-100, -100, 200, 200);
+
+// Create image with toDataURL
+var img = new Image();
+img.src = canvas.toDataURL("img/png");
+
+// !Important! Wait for image to load
+img.onload = function() {
+    document.body.appendChild(img);
+}
+				</pre>
+			</section>
+		</article>
+		
+		<article>
+			<h3>General Workflow</h3>
+			<ul>
+				<li>Create an off-screen &lt;canvas&gt;, do fancy effects</li>
+			</ul>
+			<pre><code>var canvas = document.createElement("canvas"),
+    ctx = canvas.getContext("2d");
+
+// filRect, bezierCurveTo etc
+</code></pre>
+			<ul>
+				<li>Create an &lt;img&gt; detached from DOM, set src</li>
+			</ul>
+			<pre><code>var img = new Image();
+img.src = canvas.toDataURL();</code></pre>
+			<ul>
+				<li></li>
+				<li>On load, show image</li>
+			</ul>
+			<pre><code>img.onload = function() {
+    // Attach image to DOM
+}</code></pre>
+		</article>
+		
+		<article>
+			<h3>Deeper?</h3>
+			<p>&nbsp;</p>
+			<p>
+				<img class="centered" style="height:425px" src="images/inception-deeper.png">
+			</p>
+		</article>
+		
+		<article>
+			<h3>Pixel Manipulation</h3>
+			<ul>
+				<li>ctx.createImageData(cssWidth, cssHeight);</li>
+				<li>ctx.getImageData(left, top, width, height);</li>
+				<li>ctx.putImageData(myImageData, dx, dy);</li>
+			</ul>
+			<div class="source">
+				<a href="https://developer.mozilla.org/En/HTML/Canvas/Pixel_manipulation_with_canvas">MDN - Pixel manipulation with canvas</a>
+			</div>
+		</article>
+		
+		<article>
+			<h3>Pixel Manipulation - Example</h3>
+			<p><input type="button" value="Run code" onclick="makeBlue();"></p>
+			<script id="pixel-example">
+				(function() {
+					var img = document.querySelector("img#nerves-orig");
+					var canvas = document.createElement("canvas"),
+						ctx = canvas.getContext("2d");
+					
+					// Center the canvas
+					canvas.className = "centered";
+					
+					img.onload = function() {
+						// Set dimensions
+						canvas.width = img.width * 0.75;
+						canvas.height = img.height * 0.75;
+						
+						// Get a reference to this script tag
+						var me = document.querySelector("script#pixel-example");
+						me.parentNode.insertBefore(canvas, me.nextSibling);
+						
+						// Draw the image
+						ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+					}
+				})();
+				
+				function makeBlue() {
+					var canvas = document.querySelector("script#pixel-example + canvas"),
+						ctx = canvas.getContext("2d");
+					
+					var imdata = ctx.getImageData(0, 0, canvas.width, canvas.height);
+					
+					for(var x=0; x<canvas.width; x++) {
+						for(var y=0; y<canvas.height; y++) {
+							var offset = (x + y*canvas.width)*4;
+							// Null out the Red and Green channels
+							imdata.data[offset + 0] = 0;
+							imdata.data[offset + 1] = 0;
+						}
+					}
+					
+					ctx.putImageData(imdata, 0, 0);
+					
+				}
+			</script>
+		</article>
+		
+		<article>
+			<h3>Pixel Manipulation - Code</h3>
+			<pre style="height:520px;overflow:auto;"><code>imdata = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+for(var x=0; x&lt;canvas.width; x++) {
+    for(var y=0; y&lt;canvas.height; y++) {
+        var offset = (x + y*canvas.width)*4;
+
+        // Null out the Red and Green channels
+        imdata.data[offset + 0] = 0;
+        imdata.data[offset + 1] = 0;
+
+        // Leave the Blue and alpha channels
+        //imdata.data[offset + 2] = 0;
+        //imdata.data[offset + 3] = 0;
+    }
+}
+
+ctx.putImageData(imdata, 0, 0);</code></pre>
+		</article>
+		
+		<article>
+			<h3>Pixel Manipulation - Details</h3>
+			<ul>
+				<li>ctx.[create|get]ImageData -> ImageData object</li>
+			</ul>
+			<p><pre><code>var canvas = document.createElement("canvas"),
+    ctx = canvas.getContext("2d"),
+    imdata = ctx.createImageData(10, 10);
+</code></pre></p>
+			<p><img class="centered" src="images/pixel_layout.png" />
+			<p><pre><code>var offset = (x + y*canvas.width)*4;</code></pre></p>
+			<div class="source">
+				<a href="https://developer.mozilla.org/en/DOM/ImageData">MDN - ImageData</a>, <a href="http://beej.us/blog/2010/02/html5s-canvas-part-ii-pixel-manipulation/">beej.us</a>
+			</div>
+		</article>
+		
+		<article>
+			<h3>Pixel Manipulation - Caveats</h3>
+			<ul>
+				<li>Tainted Canvas Object - wtf!?</li>
+			</ul>
+			<p><img class="centered" style="width:80%;border: 1px solid #eee;" src="images/tainted.png" /></p>
+			<div class="source">
+				<a href="http://html5-demos.appspot.com/static/html5-whats-new/template/index.html#14">Eric Bidelman Slides</a>, <a href="https://developer.mozilla.org/en/CORS_Enabled_Image">MDN - CORS Enabled Image</a>, <a href="http://www.w3.org/TR/cors/">w3.org spec</a>, <a href="http://stackoverflow.com/questions/7638919/putimagedata-on-rotated-canvas-work-incorrect">Stack Overflow</a>
+			</div>
+			<ul>
+				<li>img.crossOrigin = 'anonymous';</li>
+				<li><code>putImageData</code> ignores current canvas transforms</li>
+			</ul>
+		</article>
+		
+		<article>
+			<h3>Pixel Manipulation - The future</h3>
+			<ul>
+				<li>Typed Arrays</li>
+				<li>See <a href="http://hacks.mozilla.org/2011/12/faster-canvas-pixel-manipulation-with-typed-arrays/">http://hacks.mozilla.org/2011/12/faster-canvas-pixel-manipulation-with-typed-arrays/</a></li>
+				<li><code>Uint8ClampedArray</code> -> 10 - 100% speed improvement</li>
+			</ul>
+			<div class="source">
+				<a href="http://jsperf.com/canvas-pixel-manipulation">http://jsperf.com/canvas-pixel-manipulation</a>
+			<div>
+		</article>
+		
+		<article>
+			<h3>Demos - Everyone loves demos</h3>
+			<ul>
+				<li>All of these use &lt; 10 lines of rendering code</li>
+			</ul>
+			<p><img class="centered" style="width:80%;" src="images/demo_montage.png" />
+			<div class="source">
+				<a href="http://asserttrue.blogspot.com.au/2012/01/procedural-textures-in-html5-canvas.html">Kas Thompson</a>, <a href="http://athile.net/tools/patterns/">Athile.net</a>
+			</div>
+		</article>
+		
+		<article>
+			<h3>Take Home Points</h3>
+			<ul>
+				<li>Procedural Images with Javascript are fun and easy!</li>
+				<li>img.src = canvas.toDataURL();</li>
+				<li>ImageData.data -> offset = (x + y*canvas.width)*4</li>
+			</ul>
+		</article>
+		
+		<article>
+			<h3><del>Questions</del> - catch me after</h3>
+			<ul>
+				<li>Who was that guy?</li>
+				<li>Aaron Snoswell (<a href="twitter.com/aaronsnoswell" >@aaronsnoswell</a> on Twitter, <a href="http://elucidatedbinary.com">http://elucidatedbinary.com</a>)</li>
+				<li>Slides will be up shortly - check my twitter feed</li>
+			</ul>
+		</article>
+		
+		<article>
+			<h3>Useful/cool links</h3>
+			<ul>
+				<li><a href="http://athile.net/tools/patterns/">Procedural Image examples (Athile.net)</a></li>
+				<li><a href="http://acko.net/files/making-worlds/Making-Worlds-BazCampYVR.pdf">Interesting read on Procedural Planet generation (Steven Wittens of Acko.net)</a></li>
+				<li><a href="http://freespace.virgin.net/hugo.elias/models/m_perlin.htm">Excellent Perlin Noise reference</a></li>
+				<li><a href="http://www.shy.am/wp-content/uploads/2009/01/realistic-real-time-skies-shyam-guthikonda.pdf">Realtime Procedural Clouds (Journal Paper)</a></li>
+				<li><a href="https://developer.apple.com/safaridemos/CanvasPixelManipulation/">Safaro Demo - Image manipulation</a></li>
+				<li><a href="http://asserttrue.blogspot.com.au/2012/01/procedural-textures-in-html5-canvas.html">Kas Thomas - Procedural Image Tool</a>
+			</ul>
+		</article>
+		
+		<!--
+      <article>
+        <h3>
+          Simple slide with header and text
+        </h3>
+        <p>
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+        </p>
+        <p>
+          There is more text just underneath with a <code>code sample: 5px</code>.
+        </p>
+      </article>
+
+      <article class='smaller'>
+        <h3>
+          Simple slide with header and text (small font)
+        </h3>
+        <p>
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+        </p>
+        <p>
+          There is more text just underneath with a <code>code sample: 5px</code>.
+        </p>
+      </article>
+
+      <article>
+        <h3>
+          Slide with bullet points and a longer title, just because we
+          can make it longer
+        </h3>
+        <ul>
+          <li>
+            Use this template to create your presentation
+          </li>
+          <li>
+            Use the provided color palette, box and arrow graphics, and
+            chart styles
+          </li>
+          <li>
+            Instructions are provided to assist you in using this
+            presentation template effectively
+          </li>
+          <li>
+            At all times strive to maintain Google's corporate look and feel
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Slide with bullet points that builds
+        </h3>
+        <ul class="build">
+          <li>
+            This is an example of a list
+          </li>
+          <li>
+            The list items fade in
+          </li>
+          <li>
+            Last one!
+          </li>
+        </ul>
+
+        <div class="build">
+          <p>Any element with child nodes can build.</p>
+          <p>It doesn't have to be a list.</p>
+        </div>
+      </article>
+
+      <article class='smaller'>
+        <h3>
+          Slide with bullet points (small font)
+        </h3>
+        <ul>
+          <li>
+            Use this template to create your presentation
+          <li>
+            Use the provided color palette, box and arrow graphics, and
+            chart styles
+          <li>
+            Instructions are provided to assist you in using this
+            presentation template effectively
+          <li>
+            At all times strive to maintain Google's corporate look and feel
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Slide with a table
+        </h3>
+        
+        <table>
+          <tr>
+            <th>
+              Name
+            <th>
+              Occupation
+          <tr>
+            <td>
+              Luke Mahé
+            <td>
+              V.P. of Keepin’ It Real
+          <tr>
+            <td>
+              Marcin Wichary
+            <td>
+              The Michael Bay of Doodles
+        </table>
+      </article>
+      
+      <article class='smaller'>
+        <h3>
+          Slide with a table (smaller text)
+        </h3>
+        
+        <table>
+          <tr>
+            <th>
+              Name
+            <th>
+              Occupation
+          <tr>
+            <td>
+              Luke Mahé
+            <td>
+              V.P. of Keepin’ It Real
+          <tr>
+            <td>
+              Marcin Wichary
+            <td>
+              The Michael Bay of Doodles
+        </table>
+      </article>
+      
+      <article>
+        <h3>
+          Styles
+        </h3>
+        <ul>
+          <li>
+            <span class='red'>class="red"</span>
+          <li>
+            <span class='blue'>class="blue"</span>
+          <li>
+            <span class='green'>class="green"</span>
+          <li>
+            <span class='yellow'>class="yellow"</span>
+          <li>
+            <span class='black'>class="black"</span>
+          <li>
+            <span class='white'>class="white"</span>
+          <li>
+            <b>bold</b> and <i>italic</i>
+        </ul>
+      </article>
+      
+      <article>
+        <h2>
+          Segue slide
+        </h2>
+      </article>
+
+      <article>
+        <h3>
+          Slide with an image
+        </h3>
+        <p>
+          <img style='height: 500px' src='images/example-graphics'>
+        </p>
+        <div class='source'>
+          Source: Sergey Brin
+        </div>
+      </article>
+
+      <article>
+        <h3>
+          Slide with an image (centered)
+        </h3>
+        <p>
+          <img class='centered' style='height: 500px' src='images/example-graph.png'>
+        </p>
+        <div class='source'>
+          Source: Larry Page
+        </div>
+      </article>
+
+      <article class='fill'>
+        <h3>
+          Image filling the slide (with optional header)
+        </h3>
+        <p>
+          <img src='images/example-cat.jpg'>
+        </p>
+        <div class='source white'>
+          Source: Eric Schmidt
+        </div>
+      </article>
+
+      <article>
+        <h3>
+          This slide has some code
+        </h3>
+        <section>
+        <pre>
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+  u { color: 'umber' }
+&lt;/style&gt;
+</pre>
+        </section>
+      </article>
+      
+      <article class='smaller'>
+        <h3>
+          This slide has some code (small font)
+        </h3>
+        <section>
+        <pre>
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+  u { color: 'umber' }
+&lt;/style&gt;
+</pre>
+        </section>
+      </article>
+      
+      <article>
+        <q>
+          The best way to predict the future is to invent it.
+        </q>
+        <div class='author'>
+          Alan Kay
+        </div>
+      </article>
+      
+      <article class='smaller'>
+        <q>
+          A distributed system is one in which the failure of a computer 
+          you didn’t even know existed can render your own computer unusable.
+        </q>
+        <div class='author'>
+          Leslie Lamport
+        </div>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>
+          A slide with an embed + title
+        </h3>
+        
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+
+      <article class='nobackground'>
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+
+      <article class='fill'>
+        <h3>
+          Full-slide embed with (optional) slide title on top
+        </h3>
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+      
+      <article>
+        <h3>
+          Thank you!
+        </h3>
+        
+        <ul>
+          <li>
+            <a href='http://www.google.com'>google.com</a>
+        </ul>
+      </article>
+	-->
+
+    </section>
+
+  </body>
+</html>
