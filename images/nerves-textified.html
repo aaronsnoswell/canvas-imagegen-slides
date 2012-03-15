@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- saved from url=(0018)http://textify.it/ -->
+<html lang="en" style="background-image: url(http://textify.it/assets/images/transparent-pattern.png); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: initial initial; background-repeat: initial initial; "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		
+		<meta name="description" content="Drag images onto Textify.it and it will turn them into text portraits. The characteristics of textified images can be adjusted via settings such as font size and character set.">
+		<meta name="keywords" content="textify, css, file api, hakim, elhattab, hakim el hattab, hakim elhattab, interactive, developer, flash, html5, canvas, web, experiments">
+		<meta name="author" content="Hakim El Hattab">
+		
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		
+        <title>Textify.it - Turn Images Into Text</title>
+        
+		<link href="http://textify.it/css/reset.css" rel="stylesheet" media="screen">
+		<link href="http://textify.it/css/dat.gui.css" rel="stylesheet" media="screen">
+		<link href="http://textify.it/css/main.css" rel="stylesheet" media="screen">
+		
+		<link rel="shortcut icon" type="image/x-icon" href="http://textify.it/favicon.ico">
+		
+		<script type="text/javascript" async="" src="./nerves-textified_files/load.js"></script><script type="text/javascript" async="" src="./nerves-textified_files/ga.js"></script><script>
+			var flattr_url = 'http://hakim.se/experiments/html5/textify/';
+			var flattr_btn = 'norma';
+		</script>
+		
+		<!-- Google Analytics Tracking Code -->
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23699413-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+		
+    <script type="text/javascript" async="" src="./nerves-textified_files/pulse.js"></script></head>
+    <body data-twttr-rendered="true">
+    	<header class="">
+    		<h1>Textify.it</h1>
+    		<span class="header-instruction">Expand for more info.</span>
+    		
+    		<!-- The extra content that can be expanded -->
+    		<div class="extra">
+	    		
+    			<!-- About the game in general -->
+    			<section id="about">
+    				<h3>About</h3>
+	    			<p>
+	    				Textify.it visualizes images using text. Lots of text.<br> 
+	    				Drag and drop images on to the page to start,<br>
+	    				every image produces a unique result!
+	    			</p>
+	    			<p class="credits">
+	    				Created by <a href="http://hakim.se/">Hakim El Hattab</a> | <a href="http://twitter.com/hakimel">@hakimel</a>
+    				</p>
+	    		</section>
+	    		
+	    		<!-- Different methods for sharing the game -->
+	    		<section id="share">
+	    			<h3>Share</h3>
+					<iframe id="facebook-button" src="./nerves-textified_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:60px;" allowtransparency="true"></iframe> 
+					<div id="retweet-button"> 
+						<iframe allowtransparency="true" frameborder="0" scrolling="no" src="./nerves-textified_files/tweet_button.1331751378.html" class="twitter-share-button twitter-count-vertical" style="width: 56px; height: 62px; " title="Twitter Tweet Button"></iframe> 
+						<script type="text/javascript" src="./nerves-textified_files/widgets.js"></script> 
+					</div> 
+					<div id="flattr-button">
+	    				<iframe src="./nerves-textified_files/saved_resource.html" class="FlattrButton" width="55" height="62" frameborder="0" scrolling="no" border="0" marginheight="0" marginwidth="0" allowtransparency="true"></iframe>
+	    			</div> 
+	    		</section>
+	    		
+	    		<!-- Requirements -->
+    			<section id="requirements">
+    				<h3>Requirements</h3>
+	    			<p>
+	    				Textify has only been tested and confirmed to work<br> 
+	    				in Chrome and Firefox 4. 
+	    			</p>
+	    		</section>
+	    		
+    		</div>
+    	</header>
+    	
+    	<a id="app-store-badge" href="http://itunes.apple.com/us/app/textify-it/id441057755"></a>
+    	
+		<script src="./nerves-textified_files/hakim.header.js"></script>
+		<script src="./nerves-textified_files/DAT.GUI.min.js"></script>
+		
+		<script src="./nerves-textified_files/hakim.textify.min.js"></script><input type="file" style="visibility: hidden; "><canvas class="textify-output-canvas" style="left: 325px; top: 97.5px; " width="786" height="599"></canvas><div class="textify-output-html" style="width: 750px; height: 563px; font-family: AppleGothic; font-weight: bold; left: 343px; top: 115.5px; "></div><div class="textify-progress" style="visibility: hidden; "><div style="width: 0px; "></div><p></p></div><div id="guidat"><div class="guidat" style="width: 320px; position: absolute; top: 0px; right: -20px; "><div class="guidat-controllers" style="overflow-y: auto; height: auto; "><div class="guidat-controller string" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Preset</span><select><option value="Custom">Custom</option><option value="ABC">ABC</option><option value="Pointillism">Pointillism</option><option value="Mosaic">Mosaic</option><option value="Stitch">Stitch</option><option value="@#%">@#%</option><option value="Bubbles">Bubbles</option><option value="StarStruck">StarStruck</option><option value="Pixelate">Pixelate</option><option value="Binary">Binary</option><option value="Snow">Snow</option><option value="Dash">Dash</option></select></div><div class="guidat-controller string" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Filter</span><select><option value="None">None</option><option value="Black &amp; White">Black &amp; White</option><option value="Sepia">Sepia</option></select></div><div class="guidat-controller string" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Background</span><select><option value="#333">Dark Grey</option><option value="#888">Light Grey</option><option value="#000">Black</option><option value="#fff">White</option><option value="#c21a08">Red</option><option value="#54ad3c">Green</option><option value="#6c94d2">Blue</option><option value="transparent">Transparent</option><option value="image">Source Image</option></select></div><div class="guidat-controller string" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Character Set</span><input value="ABC" spellcheck="false"></div><div class="guidat-controller number" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Character Quantity</span><input id="characterLimit" type="text" value="13000"><div class="guidat-slider-bg"><div class="guidat-slider-fg" style="width: 30.808080808080806%; "></div></div></div><div class="guidat-controller number" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Font Scale</span><input id="characterScale" type="text" value="1.2"><div class="guidat-slider-bg"><div class="guidat-slider-fg" style="width: 14.285714285714285%; "></div></div></div><div class="guidat-controller string" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Font Family</span><select><option value="Arial">Arial</option><option value="Comic Sans MS">Comic Sans MS</option><option value="Helvetica">Helvetica</option><option value="monospace">monospace</option><option value="Times New Roman">Times New Roman</option></select></div><div class="guidat-controller string" style="-webkit-user-select: none; "><span class="guidat-propertyname" style="-webkit-user-select: none; ">Font Weight</span><select><option value="normal">normal</option><option value="bold">bold</option><option value="bolder">bolder</option></select></div><div class="guidat-controller boolean" style="-webkit-user-select: none; cursor: pointer; "><span class="guidat-propertyname" style="-webkit-user-select: none; cursor: pointer; ">Draw on Canvas (<strong>faster</strong>)</span><input type="checkbox"></div><div class="guidat-controller function" style="-webkit-user-select: none; cursor: pointer; "><span class="guidat-propertyname" style="-webkit-user-select: none; cursor: pointer; ">Browse for Image</span></div><div class="guidat-controller function" style="-webkit-user-select: none; cursor: pointer; "><span class="guidat-propertyname" style="-webkit-user-select: none; cursor: pointer; ">Save Image</span></div><div class="guidat-controller function apply-button" style="-webkit-user-select: none; cursor: pointer; "><span class="guidat-propertyname" style="-webkit-user-select: none; cursor: pointer; ">Apply Settings</span></div></div><a class="guidat-toggle" href="http://textify.it/#">Close Controls</a></div></div>		
+		<script src="./nerves-textified_files/tracker.js"></script>
+		<script>
+			w3counter(49720);
+			var ps = document.createElement('script');
+				ps.type = 'text/javascript';
+				ps.async = true;
+				ps.src = '//pulse.w3counter.com/pulse.js?id=49720';
+			(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(ps);
+		</script><a href="http://www.w3counter.com/"><img src="./nerves-textified_files/tracker.php" style="border: 0" alt="W3Counter Web Stats"></a>
+		
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		    (function() {
+		        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+		        s.type = 'text/javascript';
+		        s.async = true;
+		        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+		        t.parentNode.insertBefore(s, t);
+		    })();
+		/* ]]> */
+		</script>
+		
+    
+</body></html>

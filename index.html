@@ -18,8 +18,6 @@ http://stackoverflow.com/questions/1664140/js-function-to-calculate-complementar
 http://stackoverflow.com/questions/43044/algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
 http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
 http://en.wikipedia.org/wiki/HSL_color_space
-http://itunes.apple.com/au/app/tiny-wings/id417817520?mt=8
-
 -->
 
 <html>
@@ -48,6 +46,22 @@ http://itunes.apple.com/au/app/tiny-wings/id417817520?mt=8
 			text-overflow: ellipsis;
 		}
 		
+		.browser_compare {
+			font-size: 50pt;
+			line-height: 65pt;
+		}
+		
+		.browser_compare span {
+			float: left;
+			margin: auto 10px;
+		}
+		
+		.browser_compare img {
+			width: 90px;
+			float: left;
+			position: relative;
+		}
+		
 	</style>
 	
 </head>
@@ -62,8 +76,39 @@ http://itunes.apple.com/au/app/tiny-wings/id417817520?mt=8
         	<p>
           		Aaron Snoswell (<a href="https://twitter.com/aaronsnoswell">@aaronsnoswell</a>)
           		<br>
-          		Feb 28, 2011
+          		Mar 15, 2012
         	</p>
+      	</article>
+
+		<article>
+        	<h3>
+				Who am I?
+			</h3>
+        	<ul>
+				<li>Self-taught programmer</li>
+				<li>Front-End Developer at <a href="http://synengco.com">Synengco</a> (web-apps, js ftw!)</li>
+				<li>Android dev for up-and-coming startup!</li>
+				<li>Engineering / Physics @ UQ</li>
+				<li class="red">International expert on Procedural images + web!??!</li>
+			</ul>
+      	</article>
+
+		<article>
+        	<p>
+				<img id="google-one" class='centered' style='height:500px' src='images/google_1.png'>
+			</p>
+      	</article>
+		
+		<article>
+        	<p>
+				<img id="google-two" class='centered' style='height:500px' src='images/google_2.png'>
+			</p>
+      	</article>
+		
+		<article>
+        	<p>
+				<img id="google-three" class='centered' style='height:500px' src='images/google_3.png'>
+			</p>
       	</article>
 		
       	<article>
@@ -89,7 +134,7 @@ http://itunes.apple.com/au/app/tiny-wings/id417817520?mt=8
 			<ul>
 				<li>png - 69kb</li>
 				<li>jpg - 19kb</li>
-				<li>Procedurally generated - <a href="http://js1k.com/2012-love/demo/1022">1kb of JavaScript</a></li>
+				<li>Procedurally generated - <a href="http://js1k.com/2012-love/demo/1022"><del>1kb of JavaScript</del></a>. <a href="http://js1k.com/2012-love/demo/1100">Now in 3D!</a></li>
 				<li class="red">Caveat: Dynamic data is not cached!</li>
 			</ul>
         	<div class='source'>
@@ -325,7 +370,7 @@ ctx.putImageData(imdata, 0, 0);</code></pre>
 		<article>
 			<h3>Pixel Manipulation - Caveats</h3>
 			<ul>
-				<li>Tainted Canvas Object - wtf!?</li>
+				<li>Tainted Canvas Object?</li>
 			</ul>
 			<p><img class="centered" style="width:80%;border: 1px solid #eee;" src="images/tainted.png" /></p>
 			<div class="source">
@@ -335,6 +380,25 @@ ctx.putImageData(imdata, 0, 0);</code></pre>
 				<li>img.crossOrigin = 'anonymous';</li>
 				<li><code>putImageData</code> ignores current canvas transforms</li>
 			</ul>
+		</article>
+		
+		<article>
+			<h3>Pixel Manipulation - Can I use it?</h3>
+			
+			<p class="browser_compare">
+				<img src="images/browser_safari.png" />
+				<span>&gt;</span>
+				<img src="images/browser_chrome.png" />
+				<span>&gt;&gt;</span>
+				<img src="images/browser_firefox.png" />
+				<span>&gt;</span>
+				<img src="images/browser_opera.png" />
+				<span>&gt;</span>
+				<img src="images/browser_ie.png" />
+				<sup>*</sup>
+			</p>
+			<div class="source"><sup>*</sup> Based on a very scientific survey by yours truly</div>
+			
 		</article>
 		
 		<article>
@@ -354,7 +418,11 @@ ctx.putImageData(imdata, 0, 0);</code></pre>
 			<ul>
 				<li>All of these use &lt; 10 lines of rendering code</li>
 			</ul>
-			<p><img class="centered" style="width:80%;" src="images/demo_montage.png" />
+			<p>
+				<a href="http://elucidatedbinary.com/recanvas">
+					<img class="centered" style="width:80%;" src="images/demo_montage.png" target="_blank" />
+				</a>
+			</p>
 			<div class="source">
 				<a href="http://asserttrue.blogspot.com.au/2012/01/procedural-textures-in-html5-canvas.html">Kas Thompson</a>, <a href="http://athile.net/tools/patterns/">Athile.net</a>
 			</div>
@@ -370,7 +438,7 @@ ctx.putImageData(imdata, 0, 0);</code></pre>
 		</article>
 		
 		<article>
-			<h3><del>Questions</del> - catch me after</h3>
+			<h3>Questions?</h3>
 			<ul>
 				<li>Who was that guy?</li>
 				<li>Aaron Snoswell (<a href="twitter.com/aaronsnoswell" >@aaronsnoswell</a> on Twitter, <a href="http://elucidatedbinary.com">http://elucidatedbinary.com</a>)</li>
@@ -381,6 +449,7 @@ ctx.putImageData(imdata, 0, 0);</code></pre>
 		<article>
 			<h3>Useful/cool links</h3>
 			<ul>
+				<li><a href="http://elucidatedbinary.com/recanvas">REcanvas - Interactive Canvas Prototyping</a></li>
 				<li><a href="http://athile.net/tools/patterns/">Procedural Image examples (Athile.net)</a></li>
 				<li><a href="http://acko.net/files/making-worlds/Making-Worlds-BazCampYVR.pdf">Interesting read on Procedural Planet generation (Steven Wittens of Acko.net)</a></li>
 				<li><a href="http://freespace.virgin.net/hugo.elias/models/m_perlin.htm">Excellent Perlin Noise reference</a></li>
